@@ -1,0 +1,10 @@
+server {
+	server_name www2.elewout-vercaeren.sb.uclllabs.be;
+	index toupper.php;
+	root /var/www/www2;
+
+	location ~ \.php$ {
+		include snippets/fastcgi-php.conf;
+		fastcgi_pass unix:/run/php/php7.2-fpm.sock;			
+	}
+}
