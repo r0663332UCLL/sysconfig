@@ -4,4 +4,10 @@ server {
 		root /var/www/www1;
 		index index.html;
 	}
+
+	location /private {
+		root /var/www/www1/private;
+		auth_basic "Mr. T's super secret stuff";
+		auth_basic_user_file /etc/nginx/htpasswd;
+	}
 }
