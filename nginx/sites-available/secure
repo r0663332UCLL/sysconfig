@@ -1,0 +1,15 @@
+server {
+	listen 80;
+	server_name secure.elewout-vercaeren.sb.uclllabs.be;
+	return 301 https://secure.elewout-vercaeren.sb.uclllabs.be;
+}
+
+server {
+	listen 443 ssl;
+	server_name secure.elewout-vercaeren.sb.uclllabs.be;
+	ssl on;
+   	ssl_certificate /etc/letsencrypt/live/elewout-vercaeren.sb.uclllabs.be/fullchain.pem;
+   	ssl_certificate_key /etc/letsencrypt/live/elewout-vercaeren.sb.uclllabs.be/privkey.pem;
+	root /var/www/secure;
+	index index.html;
+}
