@@ -7,7 +7,7 @@ server {
 server {
 	listen 443 ssl;
 	add_header Strict-Transport-Security "max-age=86400; includeSubDomains" always;
-	server_name secure.elewout-vercaeren.sb.uclllabs.be;
+	server_name supersecure.elewout-vercaeren.sb.uclllabs.be;
 	ssl on;
    	ssl_certificate /etc/letsencrypt/live/elewout-vercaeren.sb.uclllabs.be/fullchain.pem;
    	ssl_certificate_key /etc/letsencrypt/live/elewout-vercaeren.sb.uclllabs.be/privkey.pem;
