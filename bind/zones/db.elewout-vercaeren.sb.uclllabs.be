@@ -2,7 +2,7 @@ $ORIGIN elewout-vercaeren.sb.uclllabs.be.
 
 ; start of authority
 @	IN 	SOA	ns.elewout-vercaeren.sb.uclllabs.be.	admin.elewout-vercaeren.sb.uclllabs.be. (
-								35		; serial
+								45		; serial
 								604800		; refresh	
 								86400		; retry
 								2419200		; expire
@@ -17,6 +17,7 @@ $ORIGIN elewout-vercaeren.sb.uclllabs.be.
 @ 	IN	A	193.191.177.145
 ns	IN	A	193.191.177.145
 www	IN	A	193.191.177.145
+mx 	IN	A	193.191.177.145
 test	IN	A	193.191.177.254
 
 ; cnames
@@ -24,6 +25,9 @@ www1	IN	CNAME	www.elewout-vercaeren.sb.uclllabs.be.
 www2	IN	CNAME	www.elewout-vercaeren.sb.uclllabs.be.
 secure  IN	CNAME	www.elewout-vercaeren.sb.uclllabs.be.
 supersecure 	IN	CNAME	www.elewout-vercaeren.sb.uclllabs.be.
+
+; mail records
+@ 	IN	MX	1	mx.elewout-vercaeren.sb.uclllabs.be.
 
 ; certificate authorities
 @ CAA 1 issue "letsencrypt.org"
