@@ -1,0 +1,13 @@
+[Unit]
+Description=iptables firewall service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/scripts/startiptablesv4.sh 
+RemainAfterExit=true
+ExecStop=/etc/scripts/stopiptablesv4.sh 
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target
