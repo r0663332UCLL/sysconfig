@@ -1,0 +1,25 @@
+filebeat.inputs:
+- type: log
+  enabled: false
+  paths:
+    - /var/log/*.log
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+setup.template.settings:
+  index.number_of_shards: 1
+setup.kibana:
+  host: "kibana.bob-vandersmissen.sb.uclllabs.be:80"
+output.elasticsearch:
+  hosts: ["elastic.bob-vandersmissen.sb.uclllabs.be:9200"]
+  index: "elewout-%{+YYYY.MM.dd}"
+setup.template.overwrite: true
+setup.template.name: "bob"
+setup.template.pattern: "bob-*"
+setup.template.settings:
+  index.number_of_replicas: 0
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
+  - add_kubernetes_metadata: ~
