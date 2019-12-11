@@ -30,15 +30,11 @@ hash=`git log -n 1 --pretty=format:%h`
 make
 make install
 
-mkdir /usr/local/etc
-mv /usr/local/freeradius-$hash/etc/raddb /usr/local/etc
+rm -rf /usr/local/freeradius-$hash/etc
+mkdir /usr/local/freeradius-$hash/etc
 ln -s /usr/local/etc/raddb /usr/local/freeradius-$hash/etc/raddb
-ln -s /usr/local/freeradius-$hash /usr/local/freeradius
-
-#fix permissions
-chgrp -R freerad /usr/local/etc
-find /usr/local/etc -type f -print0 | xargs -0 chmod 640
-find /usr/local/etc -type d -print0 | xargs -0 chmod 750
-chmod g+s /usr/local/etc/raddb/sites-available
-chmod g+s /usr/local/etc/raddb/sites-enabled
-chmod g+s /usr/local/etc/raddb/certs
+if /usr/local/freeradius-$hash/sbin/radiusd -Cxl stdout; then
+	rm /usr/local/freeradius
+	ln -s /usr/local/freeradius-$hash /usr/local/freeradius
+	systemctl restart freeradius
+fi
