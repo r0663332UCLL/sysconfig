@@ -1,5 +1,5 @@
 zone "elewout-vercaeren.sb.uclllabs.be" {
 	type master;
-	file "/etc/bind/zones/db.elewout-vercaeren.sb.uclllabs.be";
+	file "/etc/bind/zones/db.elewout-vercaeren.sb.uclllabs.be.signed";
 	allow-transfer { 193.191.176.254; 193.191.177.4; };
 };

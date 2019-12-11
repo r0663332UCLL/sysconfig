@@ -35,3 +35,5 @@ supersecure 	IN	CNAME	www.elewout-vercaeren.sb.uclllabs.be.
 
 ; certificate authorities
 @ CAA 1 issue "letsencrypt.org"
+$INCLUDE Kelewout-vercaeren.sb.uclllabs.be.+007+31895.key
+$INCLUDE Kelewout-vercaeren.sb.uclllabs.be.+007+61545.key
