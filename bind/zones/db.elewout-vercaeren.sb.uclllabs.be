@@ -2,7 +2,7 @@ $ORIGIN elewout-vercaeren.sb.uclllabs.be.
 
 ; start of authority
 @	IN 	SOA	ns.elewout-vercaeren.sb.uclllabs.be.	admin.elewout-vercaeren.sb.uclllabs.be. (
-								50		; serial
+								55		; serial
 								604800		; refresh	
 								86400		; retry
 								2419200		; expire
@@ -21,8 +21,8 @@ mx 	IN	A	193.191.177.145
 test	IN	A	193.191.177.254
 
 ; ipv6 adress records
-@	IN	AAAA	2001:6a8:2880:a077::145
-ns 	IN	AAAA	2001:6a8:2880:a077::145
+@	IN	AAAA	2001:6a8:2880:a077::91
+ns 	IN	AAAA	2001:6a8:2880:a077::91
 
 ; cnames
 www1	IN	CNAME	www.elewout-vercaeren.sb.uclllabs.be.
