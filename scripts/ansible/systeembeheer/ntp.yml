@@ -1,0 +1,18 @@
+- hosts: systeembeheer
+  tasks:
+          - name: install ntp
+            apt:
+                    name: ntp
+                    state: present
+                    update_cache: yes
+            become: yes
+          - name: copy config
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/ntp.conf
+                    dest: /etc/ntp.conf
+            become: yes
+          - name: start ntp service
+            service:
+                    name: ntp
+                    state: restarted
+            become: yes

@@ -1,0 +1,13 @@
+server {
+	server_name www1.elewout-vercaeren.sb.uclllabs.be;
+	root /var/www/www1;
+	location / {
+		index index.html;
+	}
+
+	location /private {
+		index index.html;
+		auth_basic "Mr. T's super secret stuff";
+		auth_basic_user_file /etc/nginx/htpasswd;
+	}
+}

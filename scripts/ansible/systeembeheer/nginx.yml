@@ -1,0 +1,89 @@
+- hosts: systeembeheer
+  tasks:
+          - name: install nginx
+            apt:
+                    name: nginx
+                    state: present
+                    update_cache: yes
+            become: yes
+          - name: start nginx
+            service:
+                    name: nginx
+                    state: started
+            become: yes
+          - name: copy the nginx config files
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/default
+                    dest: /etc/nginx/sites-available/default
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/www1
+                    dest: /etc/nginx/sites-available/www1
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/www2
+                    dest: /etc/nginx/sites-available/www2
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/htpasswd
+                    dest: /etc/nginx/htpasswd
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/secure
+                    dest: /etc/nginx/sites-available/secure
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/cfg/supersecure
+                    dest: /etc/nginx/sites-available/supersecure
+            become: yes
+          - name: create symlinks to enable sites
+            file:
+                    src: /etc/nginx/sites-available/default
+                    dest: /etc/nginx/sites-enabled/default
+                    state: link
+            become: yes
+            file:
+                    src: /etc/nginx/sites-available/www1
+                    dest: /etc/nginx/sites-enabled/www1
+                    state: link
+            become: yes
+            file:
+                    src: /etc/nginx/sites-available/www2
+                    dest: /etc/nginx/sites-enabled/www2
+                    state: link
+            become: yes
+            file:
+                    src: /etc/nginx/sites-available/secure
+                    dest: /etc/nginx/sites-enabled/secure
+                    state: link
+            become: yes
+            file:
+                    src: /etc/nginx/sites-available/supersecure
+                    dest: /etc/nginx/sites-enabled/supersecure
+                    state: link
+            become: yes
+          - name: copy site content
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/www/default/
+                    dest: /var/www/default
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/www/www1/
+                    dest: /var/www/www1
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/www/www2/
+                    dest: /var/www/www2
+            become: yes
+            copy:
+                    src: /home/alci/bin/scripts/ansible/systeembeheer/www/secure/
+                    dest: /var/www/secure
+            become: yes
+          - name: restart nginx
+            service:
+                    name: nginx
+                    state: restarted
+            become: yes
+
+
+
