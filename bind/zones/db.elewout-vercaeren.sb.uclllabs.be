@@ -2,7 +2,7 @@ $ORIGIN elewout-vercaeren.sb.uclllabs.be.
 
 ; start of authority
 @	IN 	SOA	ns.elewout-vercaeren.sb.uclllabs.be.	admin.elewout-vercaeren.sb.uclllabs.be. (
-								55		; serial
+								59		; serial
 								604800		; refresh	
 								86400		; retry
 								2419200		; expire
